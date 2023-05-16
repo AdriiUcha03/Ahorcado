@@ -126,6 +126,9 @@ class juegoAhorcado:
         if len(letras_incorrectas) == len(letras_incorrectas) + 2:
             print('No coinciden.')
 
+        print('\nIntento ' + str(len(letras_incorrectas)+1) + ' te quedan ' +
+              str((len(self.lista_estado_ahorcado)-len(letras_incorrectas))-1) + ' intentos')
+
         print()
 
         espacios = ['_'] * len(p_secreta)
