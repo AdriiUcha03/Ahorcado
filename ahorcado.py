@@ -2,6 +2,9 @@ import random
 
 
 class juegoAhorcado:
+    def __init__(self, fnombre):
+        self.nombre = fnombre
+
     lista_estado_ahorcado = [
         r"""
      +--+
@@ -97,7 +100,7 @@ class juegoAhorcado:
                 if ganar:
                     print(self.salvado[0])
                     print('¡Bien hecho! la palabra secreta es :', p_secreta)
-                    print('Has ganado!')
+                    print('Has ganado ' + self.nombre + '!')
                     break
             else:
                 letras_incorrectas.append(letra_intento)
@@ -150,5 +153,6 @@ class juegoAhorcado:
 
 
 if __name__ == '__main__':
-    juego1 = juegoAhorcado()
+    nombre = str(input("Dime tu nombre: "))
+    juego1 = juegoAhorcado(nombre)
     juego1.jugar()
