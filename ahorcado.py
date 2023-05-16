@@ -3,7 +3,14 @@ import sys
 
 
 class juegoAhorcado:
+    """
+    .. include:: ./README.md
+    """
     def __init__(self, fnombre):
+        """
+        Inicializador de la clase
+        :param fnombre: Parametro del nombre que se pasa a la clase.
+        """
         self.nombre = fnombre
 
     lista_estado_ahorcado = [
@@ -74,6 +81,9 @@ class juegoAhorcado:
     / \ |
     ====="""]
 
+    """
+    :param n_random: Numero aleatorio entre 0,1,2.
+    """
     n_ramdom = random.randint(0, 2)
     pista1 = 'FRUTAS'
     lista_frutas = 'PERA PLATANO UVA MANZANA MELOCOTON KIWI ALBARICOQUE CEREZA CIRUELA FRESA GRANADA HIGO LIMA LIMON ' \
@@ -85,6 +95,9 @@ class juegoAhorcado:
     lista_pc = 'MSI RAZER ACER LENOVO PAVILION OMEN ASUS APPLE CORSAIR TRUST MICROSOFT LOGITECH'.split()
     lista = [lista_frutas, lista_marcas, lista_pc]
     # Así selecionamos una de las listas y la pista en base a la lista a usar que haya tocado
+    """
+    :param lista_usar: Lista seleccionada de forma aleatoria
+    """
     lista_usar = lista[n_ramdom]
     if lista_usar == lista_frutas:
         pista = pista1
@@ -94,7 +107,10 @@ class juegoAhorcado:
         pista = pista3
 
     def jugar(self):
-
+        """
+        Funcion en la que comprobamos los intentos que se van haciendo hasta que se averigua la palabara de la lista
+        o se pierde
+        """
         letras_incorrectas = []
         letras_correctas = []
         p_secreta = random.choice(self.lista_usar)
@@ -128,6 +144,13 @@ class juegoAhorcado:
                     break
 
     def dibujar(self, letras_incorrectas, letras_correctas, p_secreta):
+        """
+        Donde vamos viendo los intentos que vamos realizando y las letras que vamos intentando
+        :param letras_incorrectas: Lista que almacena el conjunto de letras incorrectas que se introducen en
+        los intentos
+        :param letras_correctas: Lista que modifica los espacios por las letras que se van acertando
+        :param p_secreta: Palabra seleccionada de la lista aleatoria
+        """
         print(self.lista_estado_ahorcado[len(letras_incorrectas)])
         print('La categoría es: ', self.pista)
         print()
@@ -157,6 +180,11 @@ class juegoAhorcado:
 
     @staticmethod
     def pedir_letra(ya):
+        """
+        Función donde pedimos la letra y le hacemos un chequeo de condiciones.
+        :param ya: Paramatro ya sirve para comparar las letras que ya se han introducido, es decir que ya sabemos
+        :return letra_intento: Si no se cumple ninguna condición if entonces pasa al else que retorna la letra_intento
+        """
         while True:
             print('Adivina una letra.')
             letra_intento = input('> ').upper()
