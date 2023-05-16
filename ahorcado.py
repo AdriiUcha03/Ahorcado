@@ -1,4 +1,5 @@
 import random
+import sys
 
 
 class juegoAhorcado:
@@ -138,6 +139,8 @@ class juegoAhorcado:
         while True:
             print('Adivina una letra.')
             letra_intento = input('> ').upper()
+            if letra_intento == 'TERMINAR':
+                sys.exit("Programa Finalizado")
             if len(letra_intento) != 1:
                 print('Introduce una única letra.')
             elif letra_intento in ya:
