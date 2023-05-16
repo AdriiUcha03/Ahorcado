@@ -3,6 +3,9 @@ import sys
 
 
 class juegoAhorcado:
+    def __init__(self, fnombre):
+        self.nombre = fnombre
+
     lista_estado_ahorcado = [
         r"""
      +--+
@@ -113,7 +116,7 @@ class juegoAhorcado:
                 if ganar:
                     print(self.salvado[0])
                     print('¡Bien hecho! la palabra secreta es :', p_secreta)
-                    print('Has ganado!')
+                    print('Has ganado ' + self.nombre + '!')
                     break
             else:
                 letras_incorrectas.append(letra_intento)
@@ -138,6 +141,9 @@ class juegoAhorcado:
             print('Letras diferentes.')
         if len(letras_incorrectas) == len(letras_incorrectas) + 2:
             print('No coinciden.')
+
+        print('\nIntento ' + str(len(letras_incorrectas)+1) + ' te quedan ' +
+              str((len(self.lista_estado_ahorcado)-len(letras_incorrectas))-1) + ' intentos')
 
         print()
 
@@ -168,5 +174,6 @@ class juegoAhorcado:
 
 
 if __name__ == '__main__':
-    juego1 = juegoAhorcado()
+    nombre = str(input("Dime tu nombre: "))
+    juego1 = juegoAhorcado(nombre)
     juego1.jugar()
