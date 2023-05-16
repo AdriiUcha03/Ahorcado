@@ -71,15 +71,30 @@ class juegoAhorcado:
     / \ |
     ====="""]
 
-    pista = 'FRUTAS'
+    n_ramdom = random.randint(0, 2)
+    pista1 = 'FRUTAS'
     lista_frutas = 'PERA PLATANO UVA MANZANA MELOCOTON KIWI ALBARICOQUE CEREZA CIRUELA FRESA GRANADA HIGO LIMA LIMON ' \
                    'MANDARINA NARANJA MELON MORA NISPERO PIÑA POMELO SANDIA '.split()
+    pista2 = 'MARCAS DE COCHE'
+    lista_marcas = 'MCLAREN MERCEDES FORD FERRARI LAMBORGHINI RENAULT ALPINE NISSAN DACIA PEUGOT' \
+                   'ALFAROMEO AUDI VOLKSWAGEN FIAT SANYONG HONDA HYUNDAI KOENIGSEGG BUGATTI'.split()
+    pista3 = 'MARCAS PC'
+    lista_pc = 'MSI RAZER ACER LENOVO PAVILION OMEN ASUS APPLE CORSAIR TRUST MICROSOFT LOGITECH'.split()
+    lista = [lista_frutas, lista_marcas, lista_pc]
+    # Así selecionamos una de las listas y la pista en base a la lista a usar que haya tocado
+    lista_usar = lista[n_ramdom]
+    if lista_usar == lista_frutas:
+        pista = pista1
+    elif lista_usar == lista_marcas:
+        pista = pista2
+    if lista_usar == lista_pc:
+        pista = pista3
 
     def jugar(self):
 
         letras_incorrectas = []
         letras_correctas = []
-        p_secreta = random.choice(self.lista_frutas)
+        p_secreta = random.choice(self.lista_usar)
 
         while True:
             self.dibujar(letras_incorrectas, letras_correctas, p_secreta)
